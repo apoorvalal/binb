@@ -9,35 +9,21 @@
 $for(beameroption)$
 \setbeameroption{$beameroption$}
 $endfor$
+
 $if(fontfamily)$
-\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+  \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
-\usepackage{lmodern}
+  \usepackage{lmodern}
 $endif$
 \usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[utf8]{inputenc}
-$if(euro)$
-  \usepackage{eurosym}
-$endif$
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-\fi
+
+\usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 
 $for(fontfamilies)$
   \newfontfamily{$fontfamilies.name$}[$fontfamilies.options$]{$fontfamilies.font$}
 $endfor$
-
-$if(euro)$
-  \newcommand{\euro}{€}
-$endif$
 
 $if(mainfont)$
   \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
@@ -59,7 +45,7 @@ $if(CJKmainfont)$
   \usepackage{xeCJK}
   \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
 $endif$
-\fi
+
 
 $if(theme)$
   \usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{$theme$}
@@ -248,6 +234,10 @@ $if(dir)$
   \fi
 $endif$
 
+
+% import maths shortcuts
+\input{/home/alal/Templates/boilerplate/math_shortcuts.tex}
+
 $for(header-includes)$
   $header-includes$
 $endfor$
@@ -306,6 +296,13 @@ $endif$
 $if(titlegraphic)$
   \titlegraphic{\hfill\includegraphics[height=1cm]{$titlegraphic$}}
 $endif$
+
+\usepackage{appendixnumberbeamer}
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
 
 \begin{document}
 
